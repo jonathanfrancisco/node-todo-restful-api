@@ -9,25 +9,19 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 
     console.log('Connected to MongoDB Server.');
 
-    // db.collection('Todos').insertOne({
-    //     text: 'Something to do.',
-    //     completed: false
-    // }, (err, result) => {
-    //     if(err)
-    //         return console.log('unable to insert todo', err);
-    //     console.log(JSON.stringify(result.ops, undefined, 2));
-    // });
-    
-    // db.collection('Users').insertOne({
-    //     name: 'Chrisha Jewel',
-    //     age: 19,
-    //     location: 'Philippines'
-    // }, (err, result) => {
-    //     if(err)
-    //         return console.log('Unable to insert');
-    //     console.log('Successfully inserted: ',JSON.stringify(result.ops, undefined, 2));
-    //     console.log(result.ops[0]._id.getTimestamp());
-    // });
+
+    db.collection('Users').findOneAndUpdate({
+        name: 'Chrisha Jewel'
+    },{
+        $set: {
+            location: 'Sa puso ni Jonathan'
+        }
+    },{
+        returnOriginal: false
+    }, (err, result) => {
+        console.log(result);
+    });
+
    
 });
 
