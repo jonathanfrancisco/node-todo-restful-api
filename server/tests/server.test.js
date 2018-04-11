@@ -15,7 +15,7 @@ beforeEach((done) => {
     });
 });
 
-describe("/todos", () => {
+describe("POST /todos", () => {
 
     // TEST 1
     it("should create a new todo", (done) => {
@@ -57,7 +57,7 @@ describe("/todos", () => {
             });
         });
     });
-    
+
 
 });
     
