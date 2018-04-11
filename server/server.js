@@ -7,17 +7,27 @@ var app = express();
 app.use(bodyParser.json());
 
 
+
+
+app.get('/todos', (req, res) => {
+    Todo.find({}).then((todos) => {
+        res.send({todos});
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+});
+
+
 app.post('/todos',(req, res) => {
     var todo = new Todo({
         text: req.body.text
     });
-
     todo.save().then((doc) => {
+        console.log(doc);
         res.send(doc);
     }).catch((err) => {
         res.status(400).send(err);
     });
-
 });
 
 
